@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="vstyle.css">
+    <script type="importmap">
+        {
+          "imports": {
+            "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+          }
+        }
+    </script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{message}}</h1>
+        <h1 v-show="clickme">👻👻👻👻👻👻</h1>
+        <h1 v-if="clickme">Click and see what happens</h1>
+        <h1 v-else>Boooooooooooo!</h1>
+        <button class="button" @click="toggle">Click Me</button>
+        <hr><br>
+        <li v-for="item in items">
+            {{ item.message }}
+        </li>
+        <hr><br>
+        <ul>
+            <h4>Prodcut Prices</h4>
+            <li v-for="item in products">
+              {{ item.name }}
+              <span v-if="item.price >= 1000">(Expensive)</span>
+              <span v-else>(Cheap)</span>
+            </li>
+        </ul>
+        <p>Hello, {{name}}</p>
+        <input v-model.lazy="name" type="text" placeholder="enter your name">
+     
+        
+    </div>
+    
+
+    <script type="module">
+
+            import { createApp } from 'vue'
+
+            createApp({
+                data() {
+                return {
+                    message: 'Hello Vue!',
+                    clickme: true,
+                    show: true,
+                    items: [{ message: 'SIT182' }, { message: 'SIT120' },{ message: 'SIT103' },{ message: 'SIT102' }],
+                    products: [
+                        { name: 'Macbook', price: 1300 },
+                        { name: 'Iphone', price: 990 },
+                        { name: 'Monitor', price: 350 },
+                    ],
+                    name: '',
+
+                }
+                },
+                methods: {
+                    toggle() {
+                        this.clickme = !this.clickme
+                    },
+                    click(){
+                        this.show =!this.show
+                    }
+                },
+
+
+            }).mount("#app");
+    </script>
+    
+</body>
+</html>
